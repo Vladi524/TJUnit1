@@ -14,7 +14,7 @@ public class VariablesTheme {
     private static void createVariables() {
         System.out.println("1. Создание переменных и вывод их значений на консоль\n");
 
-        byte processorCoreQuantity = 4;
+        byte cpuCoreQuantity = 4;
         boolean isComputerNote = true;
         short memorySize = 8192;
         int coreFrequency = 2200;
@@ -23,7 +23,7 @@ public class VariablesTheme {
         double accVolume = 5000.15d;
         char modelIndex = 'S';
 
-        System.out.println("Количество ядер в процессоре: " + processorCoreQuantity + " шт");
+        System.out.println("Количество ядер в процессоре: " + cpuCoreQuantity + " шт");
         System.out.println("Этот компьютер ноутбук? " + isComputerNote);
         System.out.println("Обьем оперативной памяти: " + memorySize + " Мгб");
         System.out.println("Частота каждого ядра: " + coreFrequency + "Мгц");
@@ -38,13 +38,11 @@ public class VariablesTheme {
 
         int penPrice = 100; 
         int bookPrice = 200;
-        int discount = 11;
-        int discountPrice = 0;
-
-        discount = (penPrice + bookPrice) / 100 * discount;
-        discountPrice = penPrice + bookPrice - discount;
+        int discountPercent = 11;
+        int discount = (penPrice + bookPrice) / 100 * discountPercent;
+        int discountSum = penPrice + bookPrice - discount;
         System.out.println("Сумма скидки: " + discount + " руб.");
-        System.out.println("Общая стоимость товаров со скидкой: " + discountPrice + " руб."); 
+        System.out.println("Общая стоимость товаров со скидкой: " + discountSum + " руб."); 
     }
 
     private static void printJava() {
@@ -122,11 +120,11 @@ public class VariablesTheme {
         char closeBracket = ')';
         char underScore = '_';
 
-        System.out.println("    " + slash + backSlash + "    ");
-        System.out.println("   " + slash + "  " + backSlash + "   ");
+        System.out.println("    " + slash + backSlash);
+        System.out.println("   " + slash + "  " + backSlash);
         System.out.println("  " + slash + underScore + openBracket + " " + closeBracket + 
-                backSlash + "  ");
-        System.out.println(" " + slash + "      " + backSlash + " ");
+                backSlash);
+        System.out.println(" " + slash + "      " + backSlash);
         System.out.println("" + slash + underScore + underScore + underScore + slash + backSlash + 
                 underScore + underScore + underScore + backSlash);
     }
@@ -135,38 +133,27 @@ public class VariablesTheme {
         System.out.println("\n8. Вывод количества сотен, десятков и единиц числа");
 
         int number = 123;
-        int hundreds = 0;
-        int tens = 0;
-        int ones = 0;
-        int allNumberAddition = 0;
-        int allNumberMultiplication = 0;
-
+        int hundreds = number / 100;
+        int tens = number % 100 / 10;
+        int ones = number % 100 % 10;
+        int sumDigits = hundreds + tens + ones;
+        int productDigits = hundreds * tens * ones;
+        
         System.out.println("Число " + number + " содержит:");
-        hundreds = number / 100;
-        number %= 100;
-        tens = number / 10;
-        ones = number % 10;
         System.out.println(hundreds + " сотня");
         System.out.println(tens + " десяткa");
         System.out.println(ones + " единицы");
-        allNumberAddition = hundreds + tens + ones;
-        System.out.println("Сумма его цифр = " + allNumberAddition);
-        allNumberMultiplication = hundreds * tens * ones;
-        System.out.println("Произведение = " + allNumberMultiplication);
+        System.out.println("Сумма его цифр = " + sumDigits);
+        System.out.println("Произведение = " + productDigits);
     }
 
     private static void printTime() {
         System.out.println("\n9. Вывод времени");
 
         int initialSecs = 86399;
-        int secs = 0;
-        int mins = 0;
-        int hours = 0;
-
-        mins = initialSecs / 60;
-        secs = initialSecs % 60;
-        hours = mins / 60;
-        mins %= 60;
+        int mins = initialSecs / 60 % 60;
+        int secs = initialSecs % 60;
+        int hours = initialSecs / 3600;
         System.out.println(hours + ":" + mins + ":" + secs);
     }
 }
